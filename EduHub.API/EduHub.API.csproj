@@ -8,6 +8,14 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="7.2.0" />
+  </ItemGroup>
+
+  <!-- Câu 5a – API tham chiếu Application, Infrastructure, Domain (Program.cs là nơi đăng ký DI) -->
+  <ItemGroup>
+    <ProjectReference Include="..\EduHub.Application\EduHub.Application.csproj" />
+    <ProjectReference Include="..\EduHub.Infrastructure\EduHub.Infrastructure.csproj" />
+    <ProjectReference Include="..\EduHub.Domain\EduHub.Domain.csproj" />
   </ItemGroup>
 
 </Project>

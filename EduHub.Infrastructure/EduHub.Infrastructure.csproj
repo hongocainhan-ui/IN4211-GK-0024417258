@@ -1,5 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- Câu 5a – Infrastructure tham chiếu Domain và Application (để cài các interface) -->
+  <ItemGroup>
+    <ProjectReference Include="..\EduHub.Domain\EduHub.Domain.csproj" />
+    <ProjectReference Include="..\EduHub.Application\EduHub.Application.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

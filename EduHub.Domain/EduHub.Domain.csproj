@@ -1,5 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- Câu 5a, 5b – Domain là tầng lõi, KHÔNG tham chiếu project nào (nhất là Infrastructure) -->
+
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
