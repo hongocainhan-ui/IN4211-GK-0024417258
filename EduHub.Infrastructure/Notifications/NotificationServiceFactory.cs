@@ -2,6 +2,8 @@ using EduHub.Application.Interfaces;
 
 namespace EduHub.Infrastructure.Notifications;
 
+// ===== Câu 3b – Factory chọn kênh thông báo theo channel (mẫu Factory) =====
+// Câu 3a – OCP: thêm kênh mới chỉ cần thêm một dòng ở đây, EventService không phải sửa.
 public class NotificationServiceFactory : INotificationServiceFactory
 {
     public INotificationService Create(string channel)

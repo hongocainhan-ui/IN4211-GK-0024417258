@@ -6,6 +6,8 @@ using Moq;
 
 namespace EduHub.Tests;
 
+// ===== Câu 3c – Unit test cho EventService, dùng Moq =====
+// Giả lập IEventRepository và INotificationService (factory giả trả về notification giả).
 public class EventServiceTests
 {
     private readonly Mock<IEventRepository> _mockRepository = new();
@@ -22,6 +24,8 @@ public class EventServiceTests
         _service = new EventService(_mockRepository.Object, _mockFactory.Object);
     }
 
+    // ===== Câu 3c – TEST BẮT BUỘC =====
+    // Tạo sự kiện hợp lệ thì Add và Send đều được gọi đúng một lần (Times.Once).
     [Fact]
     public void CreateEvent_WithValidInput_CallsAddAndSendOnce()
     {
@@ -43,6 +47,7 @@ public class EventServiceTests
         _mockNotificationService.Verify(n => n.Send(It.Is<string>(msg => msg.Contains(title))), Times.Once);
     }
 
+    // Câu 3b – Factory nhận đúng channel "sms".
     [Fact]
     public void CreateEvent_WithSmsChannel_AsksFactoryForSmsNotifier()
     {
@@ -53,6 +58,7 @@ public class EventServiceTests
         _mockFactory.Verify(f => f.Create("sms"), Times.Once);
     }
 
+    // Câu 3b – Tiêu đề rỗng: ném lỗi, không lưu và không gửi thông báo.
     [Fact]
     public void CreateEvent_WithEmptyTitle_ThrowsArgumentExceptionAndDoesNotCallDependencies()
     {

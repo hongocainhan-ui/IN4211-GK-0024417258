@@ -3,6 +3,10 @@ using EduHub.Domain.Interfaces;
 
 namespace EduHub.Infrastructure.Repositories;
 
+// ===== Câu 3b – InMemoryEventRepository lưu sự kiện trong bộ nhớ =====
+// Câu 5a – Lớp này nằm ở tầng Infrastructure.
+// Câu 5d – List bên dưới không static, nên phải đăng ký AddSingleton trong Program.cs
+//          (AddScoped sẽ tạo repository mới mỗi request, GET sau POST trả danh sách rỗng).
 public class InMemoryEventRepository : IEventRepository
 {
     private readonly List<Event> _events = new();

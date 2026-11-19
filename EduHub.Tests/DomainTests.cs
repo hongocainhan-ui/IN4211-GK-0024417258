@@ -3,8 +3,10 @@ using EduHub.Infrastructure.Notifications;
 
 namespace EduHub.Tests;
 
+// ===== Test bổ sung cho Câu 1b (Member) và Câu 3b (Event, NotificationServiceFactory) =====
 public class DomainTests
 {
+    // Câu 1b – Email hợp lệ tạo được Member.
     [Fact]
     public void Member_Create_WithValidEmail_ReturnsMember()
     {
@@ -16,6 +18,7 @@ public class DomainTests
         Assert.Equal("student@dthu.edu.vn", member.Email);
     }
 
+    // Câu 1b – Email rỗng hoặc thiếu '@' bị từ chối.
     [Theory]
     [InlineData("")]
     [InlineData("   ")]
@@ -26,6 +29,7 @@ public class DomainTests
         Assert.Throws<ArgumentException>(() => Member.Create(invalidEmail));
     }
 
+    // Câu 3b – Event.Create từ chối tiêu đề rỗng và sức chứa <= 0.
     [Theory]
     [InlineData("", 10)]
     [InlineData("Workshop", 0)]
@@ -37,6 +41,7 @@ public class DomainTests
             Event.Create(Guid.NewGuid(), title, DateTime.UtcNow.AddDays(1), capacity));
     }
 
+    // Câu 3b – Factory chọn đúng lớp theo channel.
     [Theory]
     [InlineData("email", typeof(EmailNotificationService))]
     [InlineData("sms", typeof(SmsNotificationService))]

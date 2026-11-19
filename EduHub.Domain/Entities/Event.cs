@@ -1,5 +1,8 @@
 namespace EduHub.Domain.Entities;
 
+// ===== Câu 3b – Entity Event =====
+// Câu 3a – SRP: việc kiểm tra dữ liệu sự kiện (dòng 6–7 của đề) được tách khỏi EventService, chuyển vào đây.
+// Câu 5a – Event nằm ở tầng Domain.
 public class Event : BaseEntity
 {
     public Guid ClubId { get; private set; }
@@ -15,6 +18,7 @@ public class Event : BaseEntity
         Capacity = capacity;
     }
 
+    // Câu 3b – Event.Create(...) kiểm tra tiêu đề không rỗng và sức chứa lớn hơn 0.
     public static Event Create(Guid clubId, string title, DateTime date, int capacity)
     {
         if (clubId == Guid.Empty)

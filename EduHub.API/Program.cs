@@ -10,14 +10,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
-// Câu 3b & Câu 5d: Đăng ký Dependency Injection
+// ===== Câu 3b – Đăng ký EventService và các phụ thuộc trong Program.cs =====
+// Câu 5d – Repository dùng AddSingleton (không dùng AddScoped) để dữ liệu còn giữa các request.
 builder.Services.AddSingleton<IEventRepository, InMemoryEventRepository>();
 builder.Services.AddSingleton<INotificationServiceFactory, NotificationServiceFactory>();
 builder.Services.AddScoped<EventService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Câu 5c – Swagger UI để chạy thử API, mở tại /swagger.
 app.MapOpenApi();
 app.UseSwaggerUI(options =>
 {
